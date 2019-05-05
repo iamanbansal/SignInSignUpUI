@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    EditText email,password;
+    EditText email, password;
     CheckBox checkBox;
     ImageButton signin;
     Button signup;
@@ -26,32 +26,46 @@ public class LoginActivity extends AppCompatActivity {
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
 
-        email = (EditText)findViewById(R.id.email);
-        password = (EditText)findViewById(R.id.password);
+        // setting and displaying the custom action bar up indicator
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
-        checkBox = (CheckBox)findViewById(R.id.checkbox);
+        email = (EditText) findViewById(R.id.email);
+        password = (EditText) findViewById(R.id.password);
 
-        signin =(ImageButton)findViewById(R.id.signin);
+        checkBox = (CheckBox) findViewById(R.id.checkbox);
+
+        signin = (ImageButton) findViewById(R.id.signin);
 
         signup = (Button) findViewById(R.id.signup);
 
-        signin.setOnClickListener(new View.OnClickListener(){
+        signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LoginActivity.this,"Sign In Button Clicked",Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, "Sign In Button Clicked", Toast.LENGTH_LONG).show();
             }
         });
-        signup.setOnClickListener(new View.OnClickListener(){
+        signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(LoginActivity.this,SignUpActivity.class);
+                Intent i = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(i);
             }
         });
     }
+
+    // navigate user to the precious activity on Pressing the Custom Up Navigation
+    @Override
+    public boolean onSupportNavigateUp() {
+        super.onSupportNavigateUp();
+        onBackPressed();
+        return true;
     }
+}
 
 
 

@@ -30,12 +30,14 @@
                 android:text="Sign In"
                 android:id="@+id/signin"
                 android:textColor="@android:color/white"
+                android:transitionName="@string/btnSignInTransitionName"
                 android:background="@drawable/button_signin_background"
                 android:layout_height="wrap_content" />
             <Button
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:text="Sign Up"
+                android:transitionName="@string/btnSignUpTransitionName"
                 android:id="@+id/signup"
                 android:textColor="@android:color/white"
                 android:layout_margin="10dp"
@@ -56,6 +58,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="90dp"
+            android:transitionName="@string/tourTransitionName"
             android:background="@android:color/transparent"
             android:text="View Profile"
             android:gravity="center"

@@ -26,7 +26,16 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        /*
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+*/
+
+        // setting and displaying the custom action bar up indicator
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         email = (EditText)findViewById(R.id.email);
         password = (EditText)findViewById(R.id.password);
@@ -53,5 +62,13 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    // navigate user to the precious activity on Pressing the Custom Up Navigation
+    @Override
+    public boolean onSupportNavigateUp() {
+         super.onSupportNavigateUp();
+         onBackPressed();
+         return true;
     }
 }

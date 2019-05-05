@@ -1,6 +1,9 @@
 package aman.com.signinsignupui;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textView;
     Button signIn, signUp;
+    // Get the transition name from the string resource
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +29,24 @@ public class MainActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ViewProfileActivity.class));
+                startActivity(new Intent(MainActivity.this,ViewProfileActivity.class));
             }
         });
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                ActivityOptionsCompat options =
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(
+                                MainActivity.this,
+                                view,   // Starting view
+                                getString(R.string.btnSignInTransitionName)    // transition String
+                        );
+                //Start the Intent
+                ActivityCompat.startActivity(
+                        MainActivity.this,
+                        new Intent(MainActivity.this,LoginActivity.class),
+                        options.toBundle());
 
             }
         });
@@ -39,8 +54,18 @@ public class MainActivity extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SignUpActivity.class));
 
+                ActivityOptionsCompat options =
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(
+                                MainActivity.this,
+                                view,   // Starting view
+                                getString(R.string.btnSignUpTransitionName)    // transition String
+                        );
+                //Start the Intent
+                ActivityCompat.startActivity(
+                        MainActivity.this,
+                        new Intent(MainActivity.this,SignUpActivity.class),
+                        options.toBundle());
             }
         });
     }
